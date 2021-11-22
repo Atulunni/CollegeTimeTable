@@ -31,6 +31,8 @@ class Lecture_Class : protected Course{
         }
 };
 
+vector<Lecture_Class> admin_classes;
+vector<Lecture_Class> student_classes;
 class Student {
     string name;
     string id;
@@ -38,12 +40,39 @@ class Student {
     public:
         Student() = default;
         Student(string nm, string i) : name{nm}, id{i} {};
-        bool Add_Class(){
-
+        
+    bool Add_Class(){
+        string coco;
+        int sec_no;
+        cout<<"Enter the Course Code and the Section number";
+        cin>>coco>>sec_no;
+        for(auto i : admin_classes)
+        {
+            if(coco==i.course_code)
+        {
+            cout<<"class matched";
+            student_classes.push_back(i);
+            return true;
         }
+        return false;
+        }}
+        
+        
         bool delete_Class(){
-
+        string coco;
+        cout<<"Enter the Course Code of class to be deleted";
+        cin>>coco;
+        for(auto i : student_classes)
+        {
+            if(coco==i.course_code)
+        {
+            student_classes.erase(i);
+            return true;
         }
+        return false;
+        }
+        }
+    
         bool verify_TimeTable(){
 
         }
@@ -57,7 +86,7 @@ class Student {
         }
 };
 int main(){
-    vector<Lecture_Class> admin_classes;
+    
     vector<Student> students;
     while(true){
         int choice;
